@@ -1,7 +1,20 @@
-let computerScore = 0;
-let playerScore = 0;
+const rockBtn = document.querySelector(".rock");
+const paperBtn = document.querySelector(".paper");
+const scissorBtn = document.querySelector(".scissor");
 
+let score = {
+   win: 0,
+   lose: 0,
+   tie: 0
+}
 
+function gamePlay(value){
+   console.log(value);
+}
+
+rockBtn.addEventListener("click", gamePlay("Rock"))
+
+// Rock button function
 function computerMoveRock() {
    const randomNumber = Math.random();
    let computerMove = '';
@@ -16,6 +29,7 @@ function computerMoveRock() {
 
    let result = '';
 
+   // update result variable;
    if (computerMove === 'Rock') {
       result = 'Tie';
    } else if (computerMove === 'Paper') {
@@ -27,26 +41,21 @@ function computerMoveRock() {
    alert(`You picked rock. Computer picked ${computerMove}. ${result}`)
    console.log(result);
 
+   // update scores variables
    if (result === "You Win") {
-      playerScore += 1;
-      console.log("playerScore===>>>" + playerScore);
+      score.win += 1;
+      console.log("playerScore===>>>" + score.win);
 
    } else if (result === "You Lose") {
-      computerScore += 1;
-      console.log("computerScore===>>>" + computerScore);
+      score.lose += 1;;
+      console.log("computerScore===>>>" + score.lose);
+   } else {
+      score.tie += 1;
    }
 
-   if (computerScore === 5) {
-      alert("Computer Win and You Lose");
-      window.location.reload();
-
-   } else if (playerScore === 5) {
-      alert("Computer Lose and You Win");
-      window.location.reload();
-
-   }
+   localStorage.setItem("score", JSON.stringify(score));
 }
-
+// Paper button function
 function computerMovePaper() {
    const randomNumber = Math.random();
    let computerMove = '';
@@ -61,6 +70,7 @@ function computerMovePaper() {
 
    let result = '';
 
+   // update result variable;
    if (computerMove === 'Rock') {
       result = 'You Win';
    } else if (computerMove === 'Paper') {
@@ -72,26 +82,22 @@ function computerMovePaper() {
    alert(`You picked Paper. Computer picked ${computerMove}. ${result}`)
    console.log(result);
 
+   // update scores variables
    if (result === "You Win") {
-      playerScore += 1;
-      console.log("playerScore===>>>" + playerScore);
+      score.win += 1;
+      console.log("playerScore===>>>" + score.win);
 
    } else if (result === "You Lose") {
-      computerScore += 1;
-      console.log("computerScore===>>>" + computerScore);
+      score.lose += 1;
+      console.log("computerScore===>>>" + score.lose);
+   } else {
+      score.tie += 1;
    }
 
-   if (computerScore === 5) {
-      alert("Computer Win and You Lose");
-      window.location.reload();
-
-   } else if (playerScore === 5) {
-      alert("Computer Lose and You Win");
-      window.location.reload();
-
-   }
+   localStorage.setItem("score", JSON.stringify(score));
 }
 
+// scissor button function
 function computerMoveScissors() {
    const randomNumber = Math.random();
    let computerMove = '';
@@ -105,6 +111,7 @@ function computerMoveScissors() {
 
    let result = '';
 
+   // update result variable;
    if (computerMove === 'Rock') {
       result = 'You Lose';
    } else if (computerMove === 'Paper') {
@@ -116,22 +123,27 @@ function computerMoveScissors() {
    alert(`You picked Scissors. Computer picked ${computerMove}. ${result}`)
    console.log(result);
 
+   // update scores variables
    if (result === "You Win") {
-      playerScore += 1;
-      console.log("playerScore===>>>" + playerScore);
+      score.win += 1;
+      console.log("playerScore===>>>" + score.win);
 
    } else if (result === "You Lose") {
-      computerScore += 1;
-      console.log("computerScore===>>>" + computerScore);
+      score.lose += 1;
+      console.log("computerScore===>>>" + score.lose);
+   } else {
+      score.tie += 1;
    }
 
-   if (computerScore === 5) {
-      alert("Computer Win and You Lose");
-      window.location.reload();
-
-   } else if (playerScore === 5) {
-      alert("Computer Lose and You Win");
-      window.location.reload();
-
-   }
+   localStorage.setItem("score", JSON.stringify(score));
 }
+
+document.querySelector(".reset_score").addEventListener("click", () => {
+   localStorage.removeItem("score");
+
+   score = {
+      win: 0,
+      lose: 0,
+      tie: 0
+   };
+})

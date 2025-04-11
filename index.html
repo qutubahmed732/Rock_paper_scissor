@@ -5,16 +5,32 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rock, Paper and Scissor Game</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
   <h1>rock paper scissor game</h1>
 
-  <button onclick="computerMoveRock()">Rock</button>
-  <button onclick="computerMovePaper()">paper</button>
-  <button onclick="computerMoveScissors()">Scissor</button>
+  <h2></h2>
+  
+  <div class="buttons">
+    <button class="roll rock"><img src="rock.png" width="100" alt=""> Rock</button>
+    <button class="roll paper"><img src="paper.png" width="100" alt=""> paper</button>
+    <button class="roll scissor"><img src="scissor.png" width="100" alt="">
+      Scissor</button>
+    </div>
+    
+    <p class="para"></p>
 
-  <script src="app.js"></script>
+    <p>WIN: <span class="win"></span></p>
+    <p>LOSE: <span class="lose"></span></p>
+    <p>TIE: <span class="tie"></span></p>
+    
+    <button onclick='window.location.reload()'>Reset Button</button>
+
+  <!-- <button class="reset_score">Reset Score</button> -->
+  <!-- <script src="app.js"></script> -->
+  <script src="app1.js"></script>
 </body>
 
 </html>
